@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>範例目錄</title>
+    <style>
+        :root {
+            --bg: #f7ecff;
+            --card: #fff5ff;
+            --card-alt: #e2f4ff;
+            --text: #4d3f6b;
+            --muted: #7a6c91;
+            --heading: #3b246c;
+            --accent: #ff9dc5;
+            --accent-2: #a6d6ff;
+            --shadow: 0 16px 40px rgba(93, 80, 134, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Noto Sans TC", sans-serif;
+            background: radial-gradient(circle at top left, #ffe8f1 0%, #fef5ff 35%, #f4f0ff 100%);
+            color: var(--text);
+        }
+
+        .page {
+            display: grid;
+            grid-template-columns: minmax(280px, 360px) 1fr;
+            gap: 24px;
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 32px;
+            min-height: 100vh;
+        }
+
+        .panel {
+            background: var(--card);
+            border-radius: 32px;
+            padding: 28px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255,255,255,0.85);
+            backdrop-filter: blur(10px);
+        }
+
+        header {
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            margin: 0 0 10px;
+            font-size: clamp(2rem, 2.6vw, 3rem);
+            color: var(--heading);
+            letter-spacing: 0.04em;
+        }
+
+        .meta {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.98rem;
+            line-height: 1.8;
+        }
+
+        .menu-intro {
+            margin: 16px 0 24px;
+            padding: 18px 20px;
+            border-radius: 24px;
+            background: linear-gradient(180deg, rgba(255,157,197,0.18), rgba(166,214,255,0.18));
+            color: #4f3b70;
+            line-height: 1.8;
+        }
+
+        .menu-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 12px;
+        }
+
+        .menu-list li {
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .menu-link {
+            display: block;
+            width: 100%;
+            padding: 18px 20px;
+            text-decoration: none;
+            color: var(--heading);
+            font-weight: 600;
+            background: linear-gradient(135deg, #ffffff 0%, #f8e8ff 100%);
+            border: 1px solid rgba(255,255,255,0.8);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.6), 0 10px 24px rgba(93, 80, 134, 0.08);
+            transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+        }
+
+        .menu-link:hover,
+        .menu-link.active {
+            transform: translateX(4px);
+            background: linear-gradient(135deg, #ffebf4 0%, #d3f0ff 100%);
+            box-shadow: 0 18px 28px rgba(93, 80, 134, 0.14);
+        }
+
+        .menu-link span {
+            display: block;
+            margin-top: 6px;
+            font-size: 0.94rem;
+            color: var(--muted);
+            font-weight: 400;
+        }
+
+        .viewer {
+            background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(232,243,255,0.9));
+            border-radius: 32px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255,255,255,0.9);
+            display: flex;
+            flex-direction: column;
+            min-height: 560px;
+        }
+
+        .viewer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+
+        .viewer-header h2 {
+            margin: 0;
+            font-size: 1.4rem;
+            color: var(--heading);
+        }
+
+        .viewer-header .hint {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .frame {
+            flex: 1;
+            min-height: 0;
+            border: none;
+            border-radius: 24px;
+            width: 100%;
+            box-shadow: inset 0 0 0 1px rgba(142, 121, 169, 0.08);
+        }
+
+        @media (max-width: 900px) {
+            .page {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <section class="panel">
+            <header>
+                <h1>範例選單</h1>
+                <p class="meta">學號：12345678<br>這個頁面使用馬卡龍色系風格，並支援在下方 iframe 中預覽範例頁面。</p>
+            </header>
+            <div class="menu-intro">請點擊左側清單項目，內容將會顯示在右側的預覽區域中，讓你快速瀏覽各個範例。</div>
+            <ul class="menu-list">
+                <li><a class="menu-link active" href="ex1/index.html" data-src="ex1/index.html">範例一：我的第一個Vue頁面<span>Vue 基本架構與初始化示範</span></a></li>
+                <li><a class="menu-link" href="ex2/index.html" data-src="ex2/index.html">範例二：資料呈現與榜定<span>資料綁定與列表渲染</span></a></li>
+                <li><a class="menu-link" href="ex3/index.html" data-src="ex3/index.html">範例三：事件處理<span>按鈕與表單事件示範</span></a></li>
+                <li><a class="menu-link" href="ex4/index.html" data-src="ex4/index.html">範例四：雙向綁定<span>v-model 與資料同步範例</span></a></li>
+                <li><a class="menu-link" href="ex5/index.html" data-src="ex5/index.html">範例五：條件渲染<span>展示、隱藏與判斷式運用</span></a></li>
+                <li><a class="menu-link" href="ex6/index.html" data-src="ex6/index.html">範例六：列表渲染<span>動態清單與字串輸出</span></a></li>
+                <li><a class="menu-link" href="ex7/index.html" data-src="ex7/index.html">範例七：計算屬性<span>computed 與資料處理</span></a></li>
+                <li><a class="menu-link" href="ex8/index.html" data-src="ex8/index.html">範例八：動態樣式與類別<span>連結 CSS 與條件樣式</span></a></li>
+                <li><a class="menu-link" href="ex9/index.html" data-src="ex9/index.html">範例九：代辦事項清單專案<span>完整小專案應用展示</span></a></li>
+            </ul>
+        </section>
+
+        <section class="viewer panel">
+            <div class="viewer-header">
+                <h2>預覽視窗</h2>
+                <div class="hint">點選左側選單即可載入範例頁面</div>
+            </div>
+            <iframe id="previewFrame" class="frame" src="ex1/index.html" title="範例預覽"></iframe>
+        </section>
+    </div>
+
+    <script>
+        document.querySelectorAll('.menu-link').forEach(link => {
+            link.addEventListener('click', event => {
+                event.preventDefault();
+                const src = link.getAttribute('data-src');
+                const frame = document.getElementById('previewFrame');
+                frame.src = src;
+                document.querySelectorAll('.menu-link').forEach(item => item.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
